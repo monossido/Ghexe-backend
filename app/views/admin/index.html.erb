@@ -1,0 +1,69 @@
+<h1>Welcome</h1>
+
+<%= link_to 'New User', new_user_path %><br />
+<%= link_to 'New Event', new_event_path %><br />
+<%= link_to 'New Presence', new_presence_path %><br />
+
+<br />
+<br />
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Second name</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.second_name %></td>
+    <td><%= link_to 'Show', user_path(user) %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user_path(user),
+    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+<br />
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Day of week</th>
+    <th>Time</th>
+  </tr>
+  <% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.dayofweek %></td>
+    <td><%= event.time %></td>
+    <td><%= link_to 'Show', event_path(event) %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event_path(event),
+    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+<br />
+<table>
+  <tr>
+    <th>User</th>
+    <th>Event</th>
+    <th>Presence</th>
+  </tr>
+  <% @presences.each do |presence| %>
+  <% print "asd" + presence.user_id.to_s %>
+  <% @user = User.find(presence.user_id) %>
+  <% @event = Event.find(presence.event_id) %>
+  <tr>
+    <td><%= @user.first_name %></td>
+    <td><%= @event.title %></td>
+    <td><%= presence.presence %></td>
+    <td><%= link_to 'Show', presence_path(presence) %></td>
+    <td><%= link_to 'Edit', edit_presence_path(presence) %></td>
+    <td><%= link_to 'Destroy', presence_path(presence),
+    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>

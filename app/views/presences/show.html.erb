@@ -1,0 +1,13 @@
+<h1><%=@event.first_name%> <%=@event.second_name%></h1>
+
+<p>
+  <strong>First name:</strong>
+  <%= @event.first_name %>
+</p>
+
+<p>
+  <strong>Second name:</strong>
+  <%= @event.second_name %>
+</p>
+<%= link_to 'Back', admin_path %>
+| <%= link_to 'Edit', edit_user_path(@event) %>

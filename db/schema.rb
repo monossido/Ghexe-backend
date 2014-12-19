@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141218223625) do
 
   create_table "admins", force: true do |t|
@@ -85,22 +84,6 @@ ActiveRecord::Schema.define(version: 20141218223625) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "presence"
-=======
-ActiveRecord::Schema.define(version: 20141213151017) do
-
-  create_table "events", force: true do |t|
-    t.string   "title"
-    t.time     "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "dayofweek"
-  end
-
-  create_table "presences", force: true do |t|
-    t.boolean  "presence"
-    t.integer  "user_id"
-    t.integer  "event_id"
->>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,7 +94,6 @@ ActiveRecord::Schema.define(version: 20141213151017) do
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "second_name"
-<<<<<<< HEAD
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -129,11 +111,4 @@ ActiveRecord::Schema.define(version: 20141213151017) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-=======
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password"
-  end
-
->>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
 end

@@ -2,7 +2,6 @@
 
 one:
   title: MyString
-<<<<<<< HEAD
   dayofweek: 1
   time: 2014-12-18 22:24:35
 
@@ -10,10 +9,3 @@ two:
   title: MyString
   dayofweek: 1
   time: 2014-12-18 22:24:35
-=======
-  time: 2014-12-13 12:54:10
-
-two:
-  title: MyString
-  time: 2014-12-13 12:54:10
->>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011

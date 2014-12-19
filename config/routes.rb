@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   use_doorkeeper
 
   devise_for :admins
@@ -8,13 +9,32 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, :events, :presences
     get 'me', to: 'api#me'
+=======
+
+  get 'welcome/index'
+
+  get 'admin', to: 'admin#index'
+
+  resources :users
+
+  resources :events
+
+  resources :presences
+
+  namespace :api do
+    resources :users, :events, :presences
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+<<<<<<< HEAD
    root 'welcome#index'
+=======
+  root 'welcome#index'
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -24,7 +44,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+<<<<<<< HEAD
   resources :events, :presences
+=======
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
 
   # Example resource route with options:
   #   resources :products do

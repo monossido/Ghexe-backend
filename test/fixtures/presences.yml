@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   user_id: 
   event_id: 
   presence: false
@@ -9,3 +10,13 @@ two:
   user_id: 
   event_id: 
   presence: false
+=======
+  presence: false
+  user_id: 
+  event_id: 
+
+two:
+  presence: false
+  user_id: 
+  event_id: 
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011

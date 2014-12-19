@@ -37,7 +37,10 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+<<<<<<< HEAD
 
 gem 'devise'
 gem 'doorkeeper'
 gem 'rails_admin'
+=======
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011

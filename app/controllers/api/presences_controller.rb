@@ -1,5 +1,9 @@
 module Api
+<<<<<<< HEAD
   class PresencesController < ApiController
+=======
+  class PresencesController < ApplicationController
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
 
     def create
       @presence = Presence.new(presence_params)
@@ -29,6 +33,7 @@ module Api
     def update
       @presence = Presence.find(params[:id])
 
+<<<<<<< HEAD
       if @presence.user.id == current_resource_owner.id
         if @presence.create_or_update(presence_params)
           render :show, status: :created
@@ -37,6 +42,12 @@ module Api
         end
       else
         render json: "error:true"
+=======
+      if @Presence.update(presence_params)
+        render :show, status: :created
+      else
+        render json: @presence.errors, status: :unprocessable_entity
+>>>>>>> 7cc049fc30505611072b7afce4fce3e7abb85011
       end
     end
 

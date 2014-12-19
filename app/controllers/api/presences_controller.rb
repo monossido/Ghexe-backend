@@ -29,7 +29,7 @@ module Api
       @presence = Presence.find(params[:id])
 
       if @presence.user.id == current_resource_owner.id
-        if @presence.create_or_update(presence_params)
+        if @presence.update(presence_params)
           render :show, status: :created
         else
           render json: @presence.errors, status: :unprocessable_entity

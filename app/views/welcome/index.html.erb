@@ -1,2 +1,67 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<md-content>
+  <md-toolbar>
+    <div layout="raw" class="md-toolbar-tools">
+    <h2>
+      <span>Ghexe</span>
+    </h2>
+    <div class="signout" ng-if="currentUser">
+      <md-button ng-click="logout()">Sign out</md-button>
+    </div>
+  </div>
+  </md-toolbar>
+  <br>
+  <br>
+  <div layout="column" layout-align="start center">
+    <div ng-if="currentUser" layout="column" layout-margin layout-align="center center">
+      <h1>Benvenuto, {{ currentUser.first_name }}</h1>
+    </div>
+    <div layout="raw" layout-align="center center" layout-fill>
+    <md-whiteframe class="md-whiteframe-z1" layout="column" flex="90" flex-gt-lg="70">
+        <form ng-if="!currentUser" name="loginForm" ng-controller="LoginController" ng-submit="login(credentials)" novalidate>
+          <div layout="column" layout-margin layout-align="center center">
+          <md-input-container>
+            <label>email</label>
+            <input ng-model="credentials.email" id="email" type="email">
+          </md-input-container>
+
+          <md-input-container>
+            <label>password</label>
+            <input ng-model="credentials.password" id="password" type="password">
+          </md-input-container>
+          <br/>
+          <md-button type="submit" class="md-raised md-primary">Login</md-button>
+        </div>
+        </form>
+
+        <div ng-if="currentUser" layout="column" layout-margin layout-align="start center">
+        <md-tabs md-selected="selectedIndex">
+          <md-tab ng-repeat="tab in tabs" md-on-select="announceSelected(tab)" md-on-deselect="announceDeselected(tab)"
+           ng-disabled="tab.disabled" label="{{tab.title}}">
+           <div class="demo-tab tab{{$index}}" layout="column" layout-fill layout-align="space-around center">
+             <div ng-if="o.events[0]">
+               <div ng-repeat="event in o.events">
+                 <div ng-if="event.dayofweek == $parent.$index">
+                 <h2>{{event.title}}</h2>
+                 <div ng-repeat="presence in event.presences">
+                   {{presence.user.first_name}}:
+                   <md-switch ng-change="updatePresence(presence.id, presence.presence)" layout-align="center center" ng-if="presence.user.id == currentUser.id" ng-model="presence.presence" aria-label="Switch 1" ></md-switch>
+                   <md-switch layout-align="center center" ng-if="presence.user.id != currentUser.id" ng-disabled="true" ng-model="presence.presence" aria-label="Switch 1" >
+                     <span ng-if="presence.presence">Si</span>
+                     <span ng-if="!presence.presence">No</span>
+                   </md-switch>
+                   <br />
+                 </div>
+               </div>
+              </div>
+             </div>
+            <div ng-if="!o.events[0]" layout-margin layout-align="start center">
+              <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+            </div>
+           </div>
+         </md-tab>
+       </md-tabs>
+        </div>
+    </md-whiteframe>
+  </div>
+  </div>
+</md-content>

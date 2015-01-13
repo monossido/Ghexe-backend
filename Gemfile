@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'doorkeeper'
 gem 'rails_admin'
+gem 'gcm'
+gem 'rufus-scheduler'

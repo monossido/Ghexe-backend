@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users, :events, :presences
     get 'me', to: 'api#me'
+    put 'me', to: 'api#me_update'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -15,26 +15,23 @@ class Scheduler
     @events.each do |event|
       event_time = Time.local(t.year, t.month,t.day, event.time.hour, event.time.min, event.time.sec)
       if event_time > t
-        schedule_time = t.strftime("%Y/%m/%d") + ' ' + event.time.strftime("%H:%M:%S")
-        scheduler.at schedule_time do
-          gcm(event.id)
+        event_time = event_time - 1 * 60 * 60 #starts 1 hour before
+        scheduler.at event_time do
+          send_gcm(event.id)
         end
       end
     end
+    sleep(23*60*60) #force the process to stay up, needed for rufus scheduler
   end
 
-  def self.gcm(event_id)
+  def self.send_gcm(event_id)
+    logger = Logger.new(STDOUT)
+    logger.debug 'send_gcm_onReminder'
     @presences = Presence.where(:event_id => event_id)
-    gcm = GCM.new("AIzaSyCil8ZKsw_7vzSZNq2lI2xk8Id6tKIWFnE")
-    # you can set option parameters in here
-    #  - all options are pass to HTTParty method arguments
-    #  - ref: https://github.com/jnunemaker/httparty/blob/master/lib/httparty.rb#L40-L68
-    #  gcm = GCM.new("my_api_key", timeout: 3)
 
-    @presences.each do |presence|
-      registration_ids = [presence.user.gcm]
-      options = {data: {event_title: presence.event.title, presence: presence.presence, presence_id: presence.id}}
-      response = gcm.send(registration_ids, options)
+    @presences.each do |presence|        destination = [presence.user.gcm]
+      data = {:type => 'onReminder', :event_title => presence.event.title, :presence => presence.presence, :presence_id => presence.id}
+      GCM.send_notification( destination, data )
     end
   end
 end

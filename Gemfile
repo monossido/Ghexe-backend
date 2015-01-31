@@ -40,5 +40,6 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'doorkeeper'
 gem 'rails_admin'
-gem 'gcm'
+gem 'pushmeup'
 gem 'rufus-scheduler'
+gem 'whenever', :require => false

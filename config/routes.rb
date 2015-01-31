@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users, :events, :presences
     get 'me', to: 'api#me'
     put 'me', to: 'api#me_update'
+    get '/event/next_event', to: 'events#next_event'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
